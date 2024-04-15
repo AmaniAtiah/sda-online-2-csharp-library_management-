@@ -14,8 +14,6 @@ public class Library
         foreach (Book book in books)
         {
             Console.WriteLine(book.GetTitle());
-            Console.WriteLine(book.GetId());
-
 
         }
     }

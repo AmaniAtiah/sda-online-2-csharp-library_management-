@@ -11,11 +11,6 @@
         var user6 = new User("Fiona", new DateTime(2024, 6, 1));
         var user7 = new User("George", new DateTime(2024, 7, 1));
         var user8 = new User("Hannah", new DateTime(2024, 8, 1));
-        // var user9 = new User("Ian");
-        // var user10 = new User("Julia");
-
-
-
 
 
         var book1 = new Book("The Great Gatsby", new DateTime(2023, 1, 1));
@@ -36,8 +31,6 @@
         var book16 = new Book("Crime and Punishment", new DateTime(2024, 4, 1));
         var book17 = new Book("The Brothers Karamazov", new DateTime(2024, 5, 1));
         var book18 = new Book("Don Quixote", new DateTime(2024, 6, 1));
-        // var book19 = new Book("The Iliad");
-        // var book20 = new Book("Anna Karenina");
 
 
         var library = new Library();
@@ -86,10 +79,7 @@
 
         Console.WriteLine("\n================================================================");
 
-        string bookIdString = "54519c08-ac7d-4d64-8478-f5b98d0420b8";
-        Guid bookId = Guid.Parse(bookIdString);
-
-        library.RemoveBook(bookId);
+        library.RemoveBook(book1.GetId());
 
 
         Console.WriteLine("\n================================================================");
@@ -104,12 +94,7 @@
 
         Console.WriteLine("\n================================================================");
 
-        string userIdString = "54519c08-ac7d-4d64-8478-f5b98d0420b8";
-        Guid userId = Guid.Parse(userIdString);
-
-        library.RemoveUser(userId);
-
-
+        library.RemoveUser(user1.GetId());
 
     }
 

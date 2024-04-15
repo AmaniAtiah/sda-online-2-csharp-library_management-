@@ -2,9 +2,9 @@ public class User : LibraryItem
 {
     private string _name;
 
-    public User(string name, DateTime createdDate) : base(createdDate)
+    public User(string _name, DateTime _createdDate) : base(_name, _createdDate)
     {
-        _name = name;
+        this._name = _name;
     }
 
     public string GetName()
@@ -12,9 +12,9 @@ public class User : LibraryItem
         return _name;
     }
 
-    public void SetName(string name)
+    public void SetName(string _name)
     {
-        _name = name;
+        this._name = _name;
     }
 
 }
