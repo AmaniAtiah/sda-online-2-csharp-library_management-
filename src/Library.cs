@@ -2,11 +2,27 @@ public class Library
 {
     private List<Book> _books;
     private List<User> _users;
-
     public Library()
     {
         _books = new List<Book>();
         _users = new List<User>();
+    }
+
+    private INotificationService _notificationService;
+
+    public Library(INotificationService _notificationService)
+    {
+        this._notificationService = _notificationService;
+    }
+
+    public INotificationService GetNotificationService()
+    {
+        return _notificationService;
+    }
+
+    public void SetNotificationService(INotificationService _notificationService)
+    {
+        this._notificationService = _notificationService;
     }
 
     public void DisplayBooks(List<Book> books)
@@ -72,27 +88,69 @@ public class Library
 
     public void AddBook(Book book)
     {
-        _books.Add(book);
+        try
+        {
+            bool bookExists = _books.Any(b => b.GetTitle() == book.GetTitle());
+            if (bookExists)
+            {
+
+                _notificationService.SendNotificationOnFailure($"A book titled '{book.GetTitle()}' already exists in the Library.");
+            }
+            else
+            {
+                _books.Add(book);
+                _notificationService.SendNotificationOnSuccess($"A new book titled '{book.GetTitle()}' has been successfully added to the Library.");
+
+
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine($"{e.Message}");
+
+        }
+
+
     }
 
     public void AddUser(User user)
     {
-        _users.Add(user);
+        try {
+            bool userExists = _users.Any(u => u.GetName() == user.GetName());
+            if (userExists)
+            {
+
+                _notificationService.SendNotificationOnFailure($"A user named '{user.GetName()}' already exists in the Library.");
+            }
+            else
+            {
+                _users.Add(user);
+                _notificationService.SendNotificationOnSuccess($"A new user named '{user.GetName()}' has been successfully added to the Library.");
+
+
+            }
+        } catch (Exception e){
+            Console.WriteLine($"{e.Message}");
+        }
     }
 
     public void RemoveBook(Guid id)
     {
+        try {
         Book book = _books.FirstOrDefault(book => book.GetId() == id);
 
         if (book != null)
         {
             _books.Remove(book);
-            Console.WriteLine("Book removed successfully.");
+            _notificationService.SendNotificationOnSuccess($"A book titled '{book.GetTitle()}' has been successfully removed from the Library.");
 
         }
         else
         {
-            Console.WriteLine("Book not found.");
+            _notificationService.SendNotificationOnFailure($"A book titled '{book.GetTitle()}' does not exist in the Library.");  
+        }
+        } catch (Exception e) {
+            Console.WriteLine($"{e.Message}");
         }
 
     }
@@ -100,15 +158,19 @@ public class Library
 
     public void RemoveUser(Guid id)
     {
+        try {
         User user = _users.FirstOrDefault(book => book.GetId() == id);
         if (user != null)
         {
             _users.Remove(user);
-            Console.WriteLine("User removed successfully.");
+            _notificationService.SendNotificationOnSuccess($"A user named '{user.GetName()}' has been successfully removed from the Library.");
         }
         else
         {
-            Console.WriteLine("User not found.");
+            _notificationService.SendNotificationOnFailure($"A user named '{user.GetName()}' does not exist in the Library.");
+        }
+        } catch (Exception e) {
+            Console.WriteLine($"{e.Message}");
         }
 
     }
