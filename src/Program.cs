@@ -62,7 +62,7 @@
 
 
         libraryWithEmail.FindBooksByTitle("The Great Gatsby");
-        libraryWithEmail.RemoveBook(book1.GetId());
+        libraryWithEmail.RemoveBook(book1.Id);
 
         libraryWithEmail.GetBooks(1, 3);
 
@@ -82,7 +82,7 @@
 
 
         libraryWithEmail.FindUsersByName("Alice");
-        libraryWithEmail.RemoveUser(user1.GetId());
+        libraryWithEmail.RemoveUser(user1.Id);
 
         libraryWithEmail.GetUsers(1, 3);
 

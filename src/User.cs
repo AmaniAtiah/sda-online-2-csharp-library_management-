@@ -2,19 +2,15 @@ public class User : LibraryItem
 {
     private string _name;
 
-    public User(string _name, DateTime? _createdDate = null) : base(_name, _createdDate)
+    public User(string name, DateTime? createdDate = null) : base(name, createdDate)
     {
-        this._name = _name;
+        _name = name;
     }
 
-    public string GetName()
-    {
-        return _name;
-    }
+    public string Name{
+        get{return _name; }
+        set{ _name = value; }
 
-    public void SetName(string _name)
-    {
-        this._name = _name;
     }
-
+  
 }

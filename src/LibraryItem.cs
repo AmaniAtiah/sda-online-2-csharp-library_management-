@@ -4,42 +4,31 @@ public class LibraryItem
     private string _title;
     private DateTime _createdDate;
 
-    public LibraryItem(string _title, DateTime? _createdDate = null)
+    public LibraryItem(string title, DateTime? createdDate = null)
     {
-        this._id = Guid.NewGuid();
-        this._title = _title;
-        this._createdDate = _createdDate ?? DateTime.Now;
+        _id = Guid.NewGuid();
+        _title = title;
+        _createdDate = createdDate ?? DateTime.Now;
     }
 
 
+    public Guid Id{
+        get{return _id; }
+        set{ _id = value; }
 
-    public Guid GetId()
-    {
-        return _id;
     }
 
-    public void SetId(Guid _id)
-    {
-        this._id = _id;
+
+     public string Title{
+        get{return _title; }
+        set{ _title = value; }
+
     }
 
-    public DateTime GetCreatedDate()
-    {
-        return _createdDate;
-    }
-    public void SetCreatedDate(DateTime _createdDate)
-    {
-        this._createdDate = _createdDate;
-    }
+    public DateTime CreatedDate{
+        get{return _createdDate; }
+        set{ _createdDate = value; }
 
-    public string GetTitle()
-    {
-        return _title;
-    }
-
-    public void SetTitle(string _title)
-    {
-        this._title = _title;
     }
 
 
