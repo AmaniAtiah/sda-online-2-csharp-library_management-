@@ -2,7 +2,7 @@ public class User : LibraryItem
 {
     private string _name;
 
-    public User(string _name, DateTime _createdDate) : base(_name, _createdDate)
+    public User(string _name, DateTime? _createdDate = null) : base(_name, _createdDate)
     {
         this._name = _name;
     }

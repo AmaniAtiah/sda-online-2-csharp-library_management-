@@ -2,18 +2,17 @@ public class Library
 {
     private List<Book> _books;
     private List<User> _users;
-    public Library()
+    private INotificationService _notificationService;
+
+
+
+     public Library(INotificationService notificationService)
     {
+        _notificationService = notificationService;
         _books = new List<Book>();
         _users = new List<User>();
     }
 
-    private INotificationService _notificationService;
-
-    public Library(INotificationService _notificationService)
-    {
-        this._notificationService = _notificationService;
-    }
 
     public INotificationService GetNotificationService()
     {
@@ -45,6 +44,13 @@ public class Library
 
     public List<Book> GetBooks(int pageNumber, int pageSize)
     {
+         if (_books == null)
+    {
+        // Handle the case where _books is not initialized
+        Console.WriteLine("No books available.");
+        return new List<Book>();
+    }
+      
         List<Book> books = _books.OrderBy(book => book.GetCreatedDate())
                      .Skip((pageNumber - 1) * pageSize)
                      .Take(pageSize)
@@ -54,12 +60,20 @@ public class Library
 
 
         return books;
+ 
     }
 
 
 
     public List<User> GetUsers(int pageNumber, int pageSize)
     {
+              if (_users == null)
+    {
+        // Handle the case where _books is not initialized
+        Console.WriteLine("No User available.");
+        return new List<User>();
+    }
+      
         List<User> users = _users.OrderBy(user => user.GetCreatedDate())
                         .Skip((pageNumber - 1) * pageSize)
                         .Take(pageSize)
@@ -68,6 +82,7 @@ public class Library
         DisplayUsers(users);
 
         return users;
+        
 
     }
 

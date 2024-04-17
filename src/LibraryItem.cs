@@ -4,11 +4,11 @@ public class LibraryItem
     private string _title;
     private DateTime _createdDate;
 
-    public LibraryItem(string _title, DateTime _createdDate)
+    public LibraryItem(string _title, DateTime? _createdDate = null)
     {
         this._id = Guid.NewGuid();
         this._title = _title;
-        this._createdDate = _createdDate;
+        this._createdDate = _createdDate ?? DateTime.Now;
     }
 
 

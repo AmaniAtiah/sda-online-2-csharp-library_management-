@@ -33,69 +33,58 @@
         var book18 = new Book("Don Quixote", new DateTime(2024, 6, 1));
 
 
-        var library = new Library();
 
-        library.AddBook(book1);
-        library.AddBook(book2);
+        var emailService = new EmailNotificationService();
+        var smsService = new SMSNotificationService();
 
-        library.AddBook(book3);
-        library.AddBook(book4);
-        library.AddBook(book5);
-        library.AddBook(book6);
-        library.AddBook(book7);
-        library.AddBook(book8);
-        library.AddBook(book9);
-        library.AddBook(book10);
-        library.AddBook(book11);
-        library.AddBook(book12);
-        library.AddBook(book13);
-        library.AddBook(book14);
-        library.AddBook(book15);
-        library.AddBook(book16);
-        library.AddBook(book17);
-        library.AddBook(book18);
+        var libraryWithEmail = new Library(emailService);
+        var libraryWithSMS = new Library(smsService);
 
-        library.AddUser(user1);
+        libraryWithEmail.AddBook(book1);
+        libraryWithEmail.AddBook(book2);
+        libraryWithEmail.AddBook(book3);
+        libraryWithEmail.AddBook(book4);
+        libraryWithEmail.AddBook(book5);
+        libraryWithEmail.AddBook(book6);
+        libraryWithEmail.AddBook(book7);
+        libraryWithEmail.AddBook(book8);
+        libraryWithEmail.AddBook(book9);
+        libraryWithEmail.AddBook(book10);
+        libraryWithEmail.AddBook(book11);
 
-        library.AddUser(user2);
-
-        library.AddUser(user3);
-
-        library.AddUser(user4);
-
-        library.AddUser(user5);
-
-        library.AddUser(user6);
-
-        library.AddUser(user7);
-
-        library.AddUser(user8);
-
-        library.FindBooksByTitle("The Great Gatsby");
+        libraryWithSMS.AddBook(book12);
+        libraryWithSMS.AddBook(book13);
+        libraryWithSMS.AddBook(book14);
+        libraryWithSMS.AddBook(book15);
+        libraryWithSMS.AddBook(book16);
+        libraryWithSMS.AddBook(book17);
+        libraryWithSMS.AddBook(book18);
 
 
-        Console.WriteLine("\n================================================================");
+        libraryWithEmail.FindBooksByTitle("The Great Gatsby");
+        libraryWithEmail.RemoveBook(book1.GetId());
 
-        library.GetBooks(1, 7);
-
-        Console.WriteLine("\n================================================================");
-
-        library.RemoveBook(book1.GetId());
+        libraryWithEmail.GetBooks(1, 3);
 
 
         Console.WriteLine("\n================================================================");
 
 
-        library.FindUsersByName("Bob");
+        libraryWithEmail.AddUser(user1);
+        libraryWithEmail.AddUser(user2);
+        libraryWithEmail.AddUser(user3);
+        libraryWithEmail.AddUser(user4);
+
+        libraryWithSMS.AddUser(user5);
+        libraryWithSMS.AddUser(user6);
+        libraryWithSMS.AddUser(user7);
+        libraryWithSMS.AddUser(user8);
 
 
-        Console.WriteLine("\n================================================================");
+        libraryWithEmail.FindUsersByName("Alice");
+        libraryWithEmail.RemoveUser(user1.GetId());
 
-        library.GetUsers(1, 5);
-
-        Console.WriteLine("\n================================================================");
-
-        library.RemoveUser(user1.GetId());
+        libraryWithEmail.GetUsers(1, 3);
 
     }
 
