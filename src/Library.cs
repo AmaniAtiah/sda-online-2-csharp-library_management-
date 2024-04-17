@@ -44,7 +44,6 @@ public class Library
     {
         if (_books.Count == 0)
         {
-            // Handle the case where _books is not initialized
             Console.WriteLine("No books available.");
             return new List<Book>();
         }
@@ -67,7 +66,6 @@ public class Library
     {
         if (_users.Count == 0)
         {
-            // Handle the case where _books is not initialized
             Console.WriteLine("No User available.");
             return new List<User>();
         }
@@ -154,7 +152,7 @@ public class Library
     {
         try
         {
-            Book? book = _books.FirstOrDefault(book => book.Id == id);
+            Book book = _books.Find(book => book.Id == id);
 
             if (book != null)
             {
@@ -179,7 +177,7 @@ public class Library
     {
         try
         {
-            User? user = _users.FirstOrDefault(user => user.Id == id);
+            User user = _users.Find(user => user.Id == id);
             if (user != null)
             {
                 _users.Remove(user);
