@@ -10,7 +10,7 @@ public class Library
     {
         _books = new List<Book>();
         _users = new List<User>();
-        _notificationService = notificationService; ;
+        _notificationService = notificationService;
 
     }
 
@@ -84,7 +84,9 @@ public class Library
 
     public List<Book> FindBooksByTitle(string title)
     {
+
         List<Book> books = _books.Where(book => book.Title.Contains(title, StringComparison.OrdinalIgnoreCase)).ToList();
+
         DisplayBooks(books);
         return books;
 
@@ -95,8 +97,8 @@ public class Library
         List<User> users = _users.Where(user => user.Name.Contains(name, StringComparison.OrdinalIgnoreCase)).ToList();
         DisplayUsers(users);
         return users;
-    }
 
+    }
     public void AddBook(Book book)
     {
         try
