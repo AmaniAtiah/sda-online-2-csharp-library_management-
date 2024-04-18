@@ -3,7 +3,6 @@ public class EmailNotificationService : INotificationService {
     {
         Console.WriteLine($"Email Notification: {message}");
     } 
-
     public void SendNotificationOnFailure(string errorMessage)
     {
         Console.WriteLine($"Email Notification: {errorMessage}");

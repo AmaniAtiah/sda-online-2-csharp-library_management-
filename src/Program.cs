@@ -32,8 +32,6 @@
         var book17 = new Book("The Brothers Karamazov", new DateTime(2024, 5, 1));
         var book18 = new Book("Don Quixote", new DateTime(2024, 6, 1));
 
-
-
         var emailService = new EmailNotificationService();
         var smsService = new SMSNotificationService();
 
@@ -60,21 +58,6 @@
         libraryWithSMS.AddBook(book17);
         libraryWithSMS.AddBook(book18);
 
-        // string title = "Alice";
-
-        //  List<User> foundUsers = libraryWithEmail.FindUsersByName(title);
-        // if (foundUsers.Count > 0)
-        // {
-        //     Console.WriteLine($"Found {foundUsers.Count} user(s) with the name '{name}':");
-        //     foreach (User user in foundUsers)
-        //     {
-        //         Console.WriteLine($"Name: {user.Name}");
-        //     }
-        // }
-        // else
-        // {
-        //     Console.WriteLine($"No user found with the name '{name}'.");
-        // }
 
         libraryWithEmail.FindBooksByTitle("The Great Gatsby");
         libraryWithEmail.RemoveBook(book1.Id);
@@ -98,7 +81,7 @@
         string name = "Alice";
          libraryWithEmail.FindUsersByName(name);
         
-        
+
         libraryWithEmail.RemoveUser(user1.Id);
 
 

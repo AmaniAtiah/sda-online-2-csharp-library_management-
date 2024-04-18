@@ -3,7 +3,6 @@ public class SMSNotificationService: INotificationService {
     {
         Console.WriteLine($"SMS Notification: {message}");
     }
-
     public void SendNotificationOnFailure(string errorMessage)
     {
         Console.WriteLine($"SMS Notification: {errorMessage}");

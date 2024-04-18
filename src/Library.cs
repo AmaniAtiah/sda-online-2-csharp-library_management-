@@ -4,16 +4,12 @@ public class Library
     private List<User> _users;
     private INotificationService _notificationService;
 
-
-
     public Library(INotificationService notificationService)
     {
         _books = new List<Book>();
         _users = new List<User>();
         _notificationService = notificationService;
-
     }
-
     public INotificationService NotificationService
     {
         get { return _notificationService; }
@@ -21,16 +17,13 @@ public class Library
 
     }
 
-
     public void DisplayBooks(List<Book> books)
     {
         foreach (Book book in books)
         {
             Console.WriteLine(book.Title);
-
         }
     }
-
 
     public void DisplayUsers(List<User> users)
     {
@@ -47,20 +40,14 @@ public class Library
             Console.WriteLine("No books available.");
             return new List<Book>();
         }
-
         List<Book> books = _books.OrderBy(book => book.CreatedDate)
                      .Skip((pageNumber - 1) * pageSize)
                      .Take(pageSize)
                      .ToList();
 
         DisplayBooks(books);
-
-
         return books;
-
     }
-
-
 
     public List<User> GetUsers(int pageNumber, int pageSize)
     {
@@ -69,35 +56,26 @@ public class Library
             Console.WriteLine("No User available.");
             return new List<User>();
         }
-
         List<User> users = _users.OrderBy(user => user.CreatedDate)
                         .Skip((pageNumber - 1) * pageSize)
                         .Take(pageSize)
                         .ToList();
 
         DisplayUsers(users);
-
         return users;
-
-
     }
 
     public List<Book> FindBooksByTitle(string title)
     {
-
         List<Book> books = _books.Where(book => book.Title.Contains(title, StringComparison.OrdinalIgnoreCase)).ToList();
-
         DisplayBooks(books);
         return books;
-
     }
-
     public List<User> FindUsersByName(string name)
     {
         List<User> users = _users.Where(user => user.Name.Contains(name, StringComparison.OrdinalIgnoreCase)).ToList();
         DisplayUsers(users);
         return users;
-
     }
     public void AddBook(Book book)
     {
@@ -122,8 +100,6 @@ public class Library
             Console.WriteLine($"{e.Message}");
 
         }
-
-
     }
 
     public void AddUser(User user)
@@ -174,7 +150,6 @@ public class Library
 
     }
 
-
     public void RemoveUser(Guid id)
     {
         try
@@ -196,8 +171,6 @@ public class Library
         }
 
     }
-
-
 
 }
 
